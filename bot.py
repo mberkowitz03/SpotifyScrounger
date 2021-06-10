@@ -20,7 +20,7 @@ async def join(ctx):
     if ctx.voice_client is None:
         if ctx.author.voice:
             channel = ctx.author.voice.channel
-            await ctx.send('Got it!')
+            await ctx.message.add_reaction('👋')
             await channel.connect()
         else:
             await ctx.send("You have to be in a voice channel to invite me!")
@@ -31,6 +31,7 @@ async def join(ctx):
 async def leave(ctx):
     if ctx.voice_client and ctx.author.voice:
         await ctx.voice_client.disconnect()
+        await ctx.message.add_reaction('👋')
     else:
         await ctx.send('I\'m not in a voice channel at the moment!')
 
