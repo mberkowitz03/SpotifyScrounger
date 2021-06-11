@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
-@bot.command(name='join')
+@bot.command(name='join', help='Joins voice channel of sender')
 async def join(ctx):
     if ctx.voice_client is None:
         if ctx.author.voice:
@@ -27,7 +27,7 @@ async def join(ctx):
     else:
         await ctx.send("I'm already in a voice channel, Sorry!")
 
-@bot.command(name='leave')
+@bot.command(name='leave', help='Leaves the current voice channel')
 async def leave(ctx):
     if ctx.voice_client and ctx.author.voice:
         await ctx.voice_client.disconnect()
